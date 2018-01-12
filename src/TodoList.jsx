@@ -14,6 +14,8 @@ class TodoList extends Component {
     };
     this.handleNewTodo = this.handleNewTodo.bind(this);
     this.loadTodos = this.loadTodos.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleDone = this.handleDone.bind(this);
   }
 
   componentDidMount() {
@@ -27,14 +29,35 @@ class TodoList extends Component {
   }
 
   handleNewTodo(newTodo) {
-    // TODO: newTodo must be an object with _id, name and completed
-    const todos = [...this.state.todos, newTodo];
-    this.setState({ todos });
+    axios.post(APIURI, { name: newTodo })
+      .then(this.loadTodos())
+      .catch(error => console.log(error));
+  }
+
+  handleDone(e) {
+    let completed = false;
+    if (e.target.className.includes('disabled')) {
+      completed = true;
+    }
+    axios.put(`${APIURI}/${e.target.id}`, { completed: !completed })
+      .then(this.loadTodos())
+      .catch(error => console.log(error));
+  }
+
+  handleDelete(e) {
+    axios.delete(`${APIURI}/${e.target.id}`)
+      .then(this.loadTodos())
+      .catch(error => console.log(error));
   }
 
   render() {
     const todoItems = this.state.todos.map(todo => (
-      <TodoItem key={todo._id} {...todo} />
+      <TodoItem
+        key={todo._id}
+        {...todo}
+        handleDone={this.handleDone}
+        handleDelete={this.handleDelete}
+      />
     ));
     return [
       <TodoForm callback={this.handleNewTodo} />,

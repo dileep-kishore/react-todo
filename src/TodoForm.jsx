@@ -11,14 +11,10 @@ class TodoForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  static propTypes = {
-    callback: PropTypes.func.isRequired
-  }
-
   handleSubmit(e) {
     e.preventDefault();
-    const data = this.state.newTodo;
-    this.props.callback(this.state.newTodo)
+    this.props.callback(this.state.newTodo);
+    this.setState({ newTodo: '' });
   }
 
   render() {
@@ -57,5 +53,10 @@ class TodoForm extends Component {
     );
   }
 }
+
+
+TodoForm.propTypes = {
+  callback: PropTypes.func.isRequired,
+};
 
 export default TodoForm;
