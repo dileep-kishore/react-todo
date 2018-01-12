@@ -33,7 +33,7 @@ const App = () => (
             <h2
               className="subtitle"
             >
-              A simple todo list app built using node, express, jquery and bulma
+              A simple todo list app built using react and bulma
             </h2>
           </header>
         </div>
