@@ -20,13 +20,7 @@ const App = () => (
               <img
                 src={logo}
                 alt="logo"
-                style={{
-                  display: 'inline-block',
-                  height: 130,
-                  width: 130,
-                  padding: 0,
-                  marginBottom: -20,
-                }}
+                className="App-logo"
               />
               <span className="has-text-weight-bold">list</span>
             </h1>
