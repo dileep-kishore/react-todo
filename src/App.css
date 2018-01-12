@@ -1,0 +1,71 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(223, 217, 217);
+}
+
+#list-section {
+  flex: 1;
+}
+
+#field-section {
+  border-bottom: lightgrey dashed;
+}
+
+#heading {
+  font-size: 10em;
+  /* font-weight: 100; */
+}
+
+#heading span {
+  /* font-weight: 900; */
+  text-decoration: underline;
+  color: purple;
+}
+
+h2.subtitle {
+  color: gray;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  transition: 0.5s ease-in-out;
+}
+
+.box:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.box .text {
+  flex-basis: 90%;
+}
+
+.box:hover {
+  background: lightgray;
+}
+
+.done .text {
+  color: lightgray;
+  text-decoration: line-through;
+}
+
+.box .icon {
+  flex-basis: 5%;
+}
+
+.box .icon:hover {
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.479)
+}
+
+.done:hover {
+  background-color: white;
+}
+
+.footer {
+  padding: 10px;
+}
